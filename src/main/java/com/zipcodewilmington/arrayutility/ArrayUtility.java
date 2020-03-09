@@ -1,6 +1,7 @@
 package com.zipcodewilmington.arrayutility;
 
 import java.lang.reflect.Array;
+import java.util.Arrays;
 
 /**
  * Created by leon on 3/6/18.
@@ -23,7 +24,7 @@ public class ArrayUtility <T>{
     }
 
     public T[] merge(T[] arrayToMerge){
-        T[] retArray = (T[]) Array.newInstance(array[0].getClass(), array.length+arrayToMerge.length);
+        T[] retArray = Arrays.copyOf(array, array.length + arrayToMerge.length);
         for (int i = 0; i < array.length; i++) {
             retArray[i] = array[i];
         }
@@ -35,7 +36,7 @@ public class ArrayUtility <T>{
 
     public T[] removeValue(T item){
         Integer occurrence = getNumberOfOccurrences(item);
-        T[] retArray = (T[]) Array.newInstance(array[0].getClass(), array.length-occurrence);
+        T[] retArray = Arrays.copyOf(array, array.length - occurrence);
         Integer retArrayCounter = 0;
         for (int i = 0; i < array.length; i++) {
             if(!array[i].equals(item)) {
