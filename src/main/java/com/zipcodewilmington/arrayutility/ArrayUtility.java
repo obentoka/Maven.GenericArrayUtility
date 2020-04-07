@@ -15,12 +15,9 @@ public class ArrayUtility <T>{
     }
 
     public Integer getNumberOfOccurrences(T item){
-        Integer count = 0;
-        for (int i = 0; i < array.length; i++) {
-            if(array[i].equals(item))
-                count++;
-        }
-        return count;
+        return (int)Arrays.stream(array)
+                .filter(x -> x.equals(item))
+                .count();
     }
 
     public T[] merge(T[] arrayToMerge){
@@ -48,13 +45,10 @@ public class ArrayUtility <T>{
     }
 
     public Integer countDuplicatesInMerge(T[] arrayToMerge, T valToEvaluate){
-        Integer dupes = 0;
         T[] mergedArray = merge(arrayToMerge);
-        for (int i = 0; i < mergedArray.length; i++) {
-            if(mergedArray[i].equals(valToEvaluate))
-                dupes++;
-        }
-        return dupes;
+        return (int) Arrays.stream(mergedArray)
+                .filter(x -> x.equals(valToEvaluate))
+                .count();
     }
 
     public T getMostCommonFromMerge(T[] arrayToMerge){
